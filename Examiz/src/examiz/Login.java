@@ -15,9 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    
+    //Creates new form Login
     
     DBconnection conn;
     

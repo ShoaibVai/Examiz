@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     DBconnection conn;
     
     public Login() {
+        setUndecorated(true);
         initComponents();
        conn = new DBconnection();
         if(conn == null)

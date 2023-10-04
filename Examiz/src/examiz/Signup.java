@@ -16,6 +16,7 @@ public class Signup extends javax.swing.JFrame {
 
     
     public Signup() {
+        setUndecorated(true);
         initComponents();
         ImageIcon icon = new ImageIcon(getClass().getResource("/examiz/icons/ico.png"));
         setIconImage(icon.getImage());

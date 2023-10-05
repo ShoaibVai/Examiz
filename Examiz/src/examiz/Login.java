@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/examiz/icons/ico.png"));
 setIconImage(icon.getImage());
         setTitle("Examiz");
-        setSize(747, 470);
+        setSize(800, 500);
         
     }
 
@@ -68,6 +68,7 @@ setIconImage(icon.getImage());
         setPreferredSize(new java.awt.Dimension(700, 400));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jPanel2.setBackground(new java.awt.Color(197, 243, 228));
 
@@ -241,8 +242,10 @@ setIconImage(icon.getImage());
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnClose)
+                        .addGap(14, 14, 14)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

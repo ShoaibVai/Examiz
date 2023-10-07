@@ -1,6 +1,7 @@
 
 package examiz;
 
+import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,11 +31,15 @@ public class Login extends javax.swing.JFrame {
         }
         
             
-            
+        setLocation(300,250);            
         ImageIcon icon = new ImageIcon(getClass().getResource("/examiz/icons/ico.png"));
-setIconImage(icon.getImage());
+        setIconImage(icon.getImage());
         setTitle("Examiz");
         setSize(800, 500);
+        int arcWidth = 20; 
+        int arcHeight = 20;
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arcWidth, arcHeight));
+        
         
     }
 
@@ -65,7 +70,6 @@ setIconImage(icon.getImage());
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 204));
         setLocation(new java.awt.Point(400, 200));
-        setPreferredSize(new java.awt.Dimension(700, 400));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -82,11 +86,13 @@ setIconImage(icon.getImage());
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Username");
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 51));
         jLabel2.setText("Password");
 
         tfPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -166,9 +172,11 @@ setIconImage(icon.getImage());
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Don't have an account?");
 
         jButton1.setBackground(new java.awt.Color(197, 243, 228));
+        jButton1.setForeground(new java.awt.Color(0, 51, 51));
         jButton1.setText("SignUp!!");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

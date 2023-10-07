@@ -21,8 +21,9 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         ImageIcon icon = new ImageIcon(getClass().getResource("/examiz/icons/ico.png"));
 setIconImage(icon.getImage());
-int arcSize = 20; // You can adjust this value for different roundness
-        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arcSize, arcSize));
+        int arcWidth = 20; 
+        int arcHeight = 20;
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arcWidth, arcHeight));
     }
 
     /**

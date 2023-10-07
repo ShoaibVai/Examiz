@@ -1,6 +1,7 @@
 
 package examiz;
 
+import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,9 +33,13 @@ public class Login extends javax.swing.JFrame {
             
             
         ImageIcon icon = new ImageIcon(getClass().getResource("/examiz/icons/ico.png"));
-setIconImage(icon.getImage());
+        setIconImage(icon.getImage());
         setTitle("Examiz");
         setSize(800, 500);
+        int arcWidth = 20; 
+        int arcHeight = 20;
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arcWidth, arcHeight));
+        
         
     }
 

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package examiz;
 
 import java.awt.geom.RoundRectangle2D;
@@ -21,6 +17,7 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         ImageIcon icon = new ImageIcon(getClass().getResource("/examiz/icons/ico.png"));
 setIconImage(icon.getImage());
+        setLocation(300,250);
         int arcWidth = 20; 
         int arcHeight = 20;
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arcWidth, arcHeight));
@@ -51,8 +48,8 @@ setIconImage(icon.getImage());
         jPanel1.setBackground(new java.awt.Color(197, 243, 228));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBackground(new java.awt.Color(197, 243, 228));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 2, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
@@ -74,7 +71,7 @@ setIconImage(icon.getImage());
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -91,29 +88,38 @@ setIconImage(icon.getImage());
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tfButtonHistory.setBackground(new java.awt.Color(204, 255, 255));
         tfButtonHistory.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tfButtonHistory.setForeground(new java.awt.Color(0, 51, 51));
         tfButtonHistory.setText("History");
+        tfButtonHistory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        tfButtonQ.setBackground(new java.awt.Color(204, 255, 255));
         tfButtonQ.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tfButtonQ.setForeground(new java.awt.Color(0, 51, 51));
         tfButtonQ.setText("Submit Question");
+        tfButtonQ.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tfButtonQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfButtonQActionPerformed(evt);
+            }
+        });
 
-        tfButtonLogout.setBackground(new java.awt.Color(204, 255, 255));
         tfButtonLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tfButtonLogout.setForeground(new java.awt.Color(0, 51, 51));
         tfButtonLogout.setText("Log out");
+        tfButtonLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tfButtonLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfButtonLogoutActionPerformed(evt);
             }
         });
 
-        tfButtonA2.setBackground(new java.awt.Color(204, 255, 255));
         tfButtonA2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tfButtonA2.setForeground(new java.awt.Color(0, 51, 51));
         tfButtonA2.setText("Answer Question");
+        tfButtonA2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -195,6 +201,13 @@ setIconImage(icon.getImage());
                 log.setVisible(true);
                 
     }//GEN-LAST:event_tfButtonLogoutActionPerformed
+
+    private void tfButtonQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfButtonQActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Question q = new Question();
+        q.setVisible(true);
+    }//GEN-LAST:event_tfButtonQActionPerformed
 
     /**
      * @param args the command line arguments

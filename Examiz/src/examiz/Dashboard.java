@@ -120,6 +120,11 @@ setIconImage(icon.getImage());
         tfButtonA2.setForeground(new java.awt.Color(0, 51, 51));
         tfButtonA2.setText("Answer Question");
         tfButtonA2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tfButtonA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfButtonA2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -208,6 +213,15 @@ setIconImage(icon.getImage());
         Question q = new Question();
         q.setVisible(true);
     }//GEN-LAST:event_tfButtonQActionPerformed
+
+    private void tfButtonA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfButtonA2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Answer ans= new Answer();
+        ans.setVisible(true);
+        ans.setTitle("Answer Panel");
+        
+    }//GEN-LAST:event_tfButtonA2ActionPerformed
 
     /**
      * @param args the command line arguments

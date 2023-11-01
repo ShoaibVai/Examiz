@@ -2,6 +2,8 @@ package examiz;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author siofa
  */
 public class Signup extends javax.swing.JFrame {
+        private int xOffset, yOffset;
 
     
     public Signup() {
@@ -33,6 +36,24 @@ public class Signup extends javax.swing.JFrame {
             }
         }
     });
+         getContentPane().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // Get the current mouse cursor position relative to the window
+                xOffset = e.getX();
+                yOffset = e.getY();
+            }
+        });
+
+        getContentPane().addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                // Calculate the new window position based on the mouse drag
+                int x = e.getXOnScreen() - xOffset;
+                int y = e.getYOnScreen() - yOffset;
+                setLocation(x, y);
+            }
+        });
     }
 
     /**

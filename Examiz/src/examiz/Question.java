@@ -79,6 +79,7 @@ public class Question extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tfSetName = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -175,7 +176,7 @@ public class Question extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 51, 51));
-        jButton2.setText("Submit Question");
+        jButton2.setText("Create Question");
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.blue, java.awt.Color.blue));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +225,17 @@ public class Question extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 51, 51));
+        jButton4.setText("Submit Question");
+        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.white, java.awt.Color.blue, java.awt.Color.blue));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -234,14 +246,15 @@ public class Question extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(257, 257, 257)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -251,7 +264,11 @@ public class Question extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -338,49 +355,62 @@ public class Question extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Get the table name from tfSetName
     String tableName = tfSetName.getText();
-    
+
+    // Check if the table name is empty
+    if (tableName.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a Set Name", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
     // Check if the table already exists
-    if (!isTableExists(tableName)) {
+    if (isTableExists(tableName)) {
+       JOptionPane.showMessageDialog(this, "Question Set Already Exist", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+if (!isTableExists(tableName)) {
         // Create a new table if it doesn't exist
         createTable(tableName);
+            JOptionPane.showMessageDialog(this, "Question Set Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            jButton2.getText().equals("dfsfgasfg");
+
     }
-    
-    // Insert the question and answer into the table
-    String Q = tfq.getText();
-    String A = tfa.getText();
-    insertQnA(tableName, Q, A);
-    
-    // Clear the text fields
-    tfq.setText("");
-    tfa.setText("");
-    dispose();
-    Dashboard dd= new Dashboard();
-    dd.setVisible(true);
-    dd.setTitle("Dashboard");
-    
- 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
          // Get the table name from tfSetName
     String tableName = tfSetName.getText();
-    
+
+    // Check if the table name is empty
+    if (tableName.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a Set Name", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Check if the question and answer fields are empty
+    String Q = tfq.getText();
+    String A = tfa.getText();
+    if (Q.isEmpty() || A.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in both Question and Answer fields", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
     // Check if the table already exists
     if (!isTableExists(tableName)) {
         // Create a new table if it doesn't exist
         createTable(tableName);
     }
-    
+
     // Insert the question and answer into the table
-    String Q = tfq.getText();
-    String A = tfa.getText();
     insertQnA(tableName, Q, A);
-    
+
     // Clear the text fields
     tfq.setText("");
     tfa.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,6 +451,7 @@ public class Question extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -516,20 +547,7 @@ private boolean isTableExists(String tableName) {
         System.err.println("Error: " + e.getMessage());
         JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 }

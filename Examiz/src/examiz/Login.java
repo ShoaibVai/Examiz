@@ -1,6 +1,8 @@
 
 package examiz;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +22,8 @@ public class Login extends javax.swing.JFrame {
     //Creates new form Login
     
     DBconnection conn;
-    
+        private int xOffset, yOffset;
+
     public Login() {
         setUndecorated(true);
         initComponents();
@@ -39,7 +42,24 @@ public class Login extends javax.swing.JFrame {
         int arcWidth = 20; 
         int arcHeight = 20;
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arcWidth, arcHeight));
-        
+        getContentPane().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // Get the current mouse cursor position relative to the window
+                xOffset = e.getX();
+                yOffset = e.getY();
+            }
+        });
+
+        getContentPane().addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                // Calculate the new window position based on the mouse drag
+                int x = e.getXOnScreen() - xOffset;
+                int y = e.getYOnScreen() - yOffset;
+                setLocation(x, y);
+            }
+        });
         
     }
 

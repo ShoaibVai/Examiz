@@ -128,7 +128,7 @@ public class Answer extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Write your Question:");
 
-        Ques.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Ques.setFont(new java.awt.Font("Segoe UI Light", 3, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

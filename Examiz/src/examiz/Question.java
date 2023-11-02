@@ -410,6 +410,34 @@ if (!isTableExists(tableName)) {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        String tableName = tfSetName.getText();
+
+    // Check if the table name is empty
+    if (tableName.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a Set Name", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Check if the question and answer fields are empty
+    String Q = tfq.getText();
+    String A = tfa.getText();
+    if (Q.isEmpty() || A.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please fill in both Question and Answer fields", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Check if the table already exists
+    if (!isTableExists(tableName)) {
+        // Create a new table if it doesn't exist
+        createTable(tableName);
+    }
+
+    // Insert the question and answer into the table
+    insertQnA(tableName, Q, A);
+    dispose();
+    Dashboard dd = new Dashboard();
+    dd.setVisible(true);
+    dd.setTitle("Dashboard");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

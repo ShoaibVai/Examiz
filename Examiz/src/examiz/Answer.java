@@ -1,15 +1,14 @@
 package examiz;
 
-import com.mysql.cj.jdbc.DatabaseMetaData;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ImageIcon;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -157,6 +156,12 @@ public class Answer extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Question Set Name");
 
+        tfQset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfQsetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -242,7 +247,7 @@ public class Answer extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Kalpurush", 3, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel4.setText("Question Panel");
+        jLabel4.setText("Answer Panel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -299,12 +304,25 @@ public class Answer extends javax.swing.JFrame {
 
     private void GbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GbttnActionPerformed
         // TODO add your handling code here:
+             String Setname= tfQset.getText();
+        if (Setname.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a Set Name", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+        if (!isTableExists(Setname)) {
+       JOptionPane.showMessageDialog(this, "Question Set Does not Exist", "Error", JOptionPane.ERROR_MESSAGE);
+    }
         if (Gbttn.getText().equals("Load Question")) {
             loadQuestionFromDatabase();
         } else if (Gbttn.getText().equals("Submit")) {
             // Add code to handle submission
         }
     }//GEN-LAST:event_GbttnActionPerformed
+
+    private void tfQsetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQsetActionPerformed
+        // TODO add your handling code here:
+   
+    }//GEN-LAST:event_tfQsetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,5 +406,37 @@ private void loadQuestionFromDatabase() {
     } catch (SQLException e) {
         e.printStackTrace();
     }
+}
+public boolean isTableExists(String tableName) {
+    java.sql.Connection dbcon = DBconnection.connectDB();
+    
+    try {
+        // Create a query to check if the table exists
+        String query = "SELECT count(*) FROM information_schema.tables WHERE table_name = ?";
+        PreparedStatement stmt = dbcon.prepareStatement(query);
+        stmt.setString(1, tableName);
+        ResultSet result = stmt.executeQuery();
+        
+        if (result.next()) {
+            int count = result.getInt(1);
+            return count > 0; // If count is greater than 0, the table exists
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.err.println("Error: " + e.getMessage());
+        // Handle the SQL exception here
+        JOptionPane.showMessageDialog(this, "An error occurred while checking for table existence: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } finally {
+        try {
+            if (dbcon != null) {
+                dbcon.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+    
+    return false; // Return false by default (in case of exceptions)
 }
 }

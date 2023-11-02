@@ -1,16 +1,11 @@
 package examiz;
 
 import java.awt.geom.RoundRectangle2D;
-import java.sql.PreparedStatement;
 import javax.swing.ImageIcon;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;  
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
-import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -530,9 +525,6 @@ private boolean isTableExists(String tableName) {
     
     return false; // Return false by default (in case of exceptions)
 }
-
-    
-    
     private void createTable(String tableName) {
     java.sql.Connection dbcon = DBconnection.connectDB();
     

@@ -73,6 +73,7 @@ public class Answer extends javax.swing.JFrame {
         tfQset = new javax.swing.JTextField();
         Gbttn = new javax.swing.JButton();
         nxtbttn = new javax.swing.JButton();
+        scorelbl = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -135,8 +136,8 @@ public class Answer extends javax.swing.JFrame {
                     .addComponent(Ques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(0, 516, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)))
+                .addGap(165, 165, 165))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +146,7 @@ public class Answer extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Ques, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(204, 255, 255));
@@ -197,6 +198,11 @@ public class Answer extends javax.swing.JFrame {
         nxtbttn.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         nxtbttn.setForeground(new java.awt.Color(0, 153, 153));
         nxtbttn.setText("Next");
+        nxtbttn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nxtbttnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -211,10 +217,12 @@ public class Answer extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Gbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Gbttn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nxtbttn)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addComponent(scorelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nxtbttn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,12 +235,17 @@ public class Answer extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Gbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nxtbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(scorelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(nxtbttn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170))))
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examiz/icons/close (1).gif"))); // NOI18N
@@ -253,8 +266,8 @@ public class Answer extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(760, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(767, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,6 +337,11 @@ public class Answer extends javax.swing.JFrame {
    
     }//GEN-LAST:event_tfQsetActionPerformed
 
+    private void nxtbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtbttnActionPerformed
+        // TODO add your handling code here:
+        loadNextQuestion();
+    }//GEN-LAST:event_nxtbttnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +391,7 @@ public class Answer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton nxtbttn;
+    private javax.swing.JLabel scorelbl;
     private javax.swing.JTextField tfQset;
     private javax.swing.JTextField tfans;
     // End of variables declaration//GEN-END:variables
@@ -438,5 +457,108 @@ public boolean isTableExists(String tableName) {
     }
     
     return false; // Return false by default (in case of exceptions)
+}
+private boolean checkAnswer() {
+    String questionSetName = tfQset.getText(); // Get the table name from tfQset
+    String userAnswer = tfans.getText(); // Get the user's answer
+
+    try (Connection conn = DBconnection.connectDB()) {
+        if (conn != null) {
+            // Create a query to retrieve the answer from the specified table
+            String query = "SELECT a FROM " + questionSetName;
+            try (PreparedStatement statement = conn.prepareStatement(query)) {
+                ResultSet result = statement.executeQuery();
+                if (result.next()) {
+                    // Retrieve the correct answer from the database
+                    String correctAnswer = result.getString("a");
+
+                    // Compare the user's answer with the correct answer
+                    if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+                        return true; // Answers match
+                    }
+                }
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "An error occurred while checking the answer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    return false; // Default: answers do not match or an error occurred
+}
+private int questionNumber = 2;
+private void loadNextQuestion() {
+    // Get the Question Set name from the tfQset JTextField
+    String questionSetName = tfQset.getText();
+
+    // Check if the Question Set table exists
+    try (Connection conn = DBconnection.connectDB()) {
+        if (conn != null) {
+            java.sql.DatabaseMetaData metadata = conn.getMetaData();
+            ResultSet resultSet = metadata.getTables(null, null, questionSetName, null);
+            if (resultSet.next()) {
+                // The table exists, so retrieve the next question
+                String query = "SELECT q FROM " + questionSetName + " WHERE question_number = ?";
+                try (PreparedStatement statement = conn.prepareStatement(query)) {
+                    statement.setInt(1, questionNumber);
+                    ResultSet result = statement.executeQuery();
+                    if (result.next()) {
+                        // Display the next question in the Ques label
+                        String question = result.getString("q");
+                        Ques.setText(question);
+
+                        // Increment the question number for the next click
+                        questionNumber++;
+
+                        Gbttn.setText("Submit"); // Change button text for submission
+                    } else {
+                        Ques.setText("No more questions found");
+                        nxtbttn.setEnabled(false); // Disable "Next" button when no more questions
+                    }
+                }
+            } else {
+                Ques.setText("Question Set not found");
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+private int score = 0; // Initialize the score
+
+private void checkAndScoreAnswer() {
+    // Get the Question Set name from the tfQset JTextField
+    String questionSetName = tfQset.getText();
+
+    // Check if the Question Set table exists
+    try (Connection conn = DBconnection.connectDB()) {
+        if (conn != null) {
+            // Create a query to retrieve the answer from the specified table
+            String query = "SELECT a FROM " + questionSetName + " WHERE question_number = ?";
+            try (PreparedStatement statement = conn.prepareStatement(query)) {
+                statement.setInt(1, questionNumber - 1); // Adjusted to the previous question number
+                ResultSet result = statement.executeQuery();
+                if (result.next()) {
+                    // Retrieve the correct answer from the database
+                    String correctAnswer = result.getString("a");
+
+                    // Get the user's answer from the text field
+                    String userAnswer = tfans.getText();
+
+                    // Compare the user's answer with the correct answer
+                    if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+                        // Answers match, update the score
+                        score++;
+                        JOptionPane.showMessageDialog(this, "Correct Answer! Your Score: " + score, "Result", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Incorrect Answer. Your Score: " + score, "Result", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "An error occurred while checking the answer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
 }
 }

@@ -527,9 +527,9 @@ private boolean isTableExists(String tableName) {
 }
     private void createTable(String tableName) {
     java.sql.Connection dbcon = DBconnection.connectDB();
-    
+
     try {
-        String createTableQuery = "CREATE TABLE " + tableName + " (q VARCHAR(255), a VARCHAR(255))";
+        String createTableQuery = "CREATE TABLE " + tableName + " (question_number INT AUTO_INCREMENT, q VARCHAR(255), a VARCHAR(255), PRIMARY KEY (question_number))";
         PreparedStatement createTableStmt = dbcon.prepareStatement(createTableQuery);
         createTableStmt.executeUpdate();
         createTableStmt.close();
@@ -540,6 +540,7 @@ private boolean isTableExists(String tableName) {
         JOptionPane.showMessageDialog(this, "An error occurred while creating the table: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+
     
     
     

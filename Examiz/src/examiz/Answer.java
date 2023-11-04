@@ -328,7 +328,10 @@ public class Answer extends javax.swing.JFrame {
         if (Gbttn.getText().equals("Load Question")) {
             loadQuestionFromDatabase();
         } else if (Gbttn.getText().equals("Submit")) {
-            // Add code to handle submission
+            dispose();
+            Dashboard dd = new Dashboard();
+            dd.setVisible(true);
+            dd.setTitle("Dashboard");
         }
     }//GEN-LAST:event_GbttnActionPerformed
 
@@ -339,7 +342,9 @@ public class Answer extends javax.swing.JFrame {
 
     private void nxtbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtbttnActionPerformed
         // TODO add your handling code here:
+        checkAndScoreAnswer();
         loadNextQuestion();
+        tfans.setText("");
     }//GEN-LAST:event_nxtbttnActionPerformed
 
     /**
@@ -524,8 +529,8 @@ private void loadNextQuestion() {
         e.printStackTrace();
     }
 }
-private int score = 0; // Initialize the score
 
+private int score = 0; // Initialize the score
 private void checkAndScoreAnswer() {
     // Get the Question Set name from the tfQset JTextField
     String questionSetName = tfQset.getText();
@@ -549,6 +554,7 @@ private void checkAndScoreAnswer() {
                     if (userAnswer.equalsIgnoreCase(correctAnswer)) {
                         // Answers match, update the score
                         score++;
+                        scorelbl.setText("Score: " + score); // Update the score label
                         JOptionPane.showMessageDialog(this, "Correct Answer! Your Score: " + score, "Result", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(this, "Incorrect Answer. Your Score: " + score, "Result", JOptionPane.ERROR_MESSAGE);
@@ -561,4 +567,5 @@ private void checkAndScoreAnswer() {
         JOptionPane.showMessageDialog(this, "An error occurred while checking the answer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+
 }

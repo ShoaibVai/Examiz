@@ -317,22 +317,26 @@ public class Answer extends javax.swing.JFrame {
 
     private void GbttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GbttnActionPerformed
         // TODO add your handling code here:
-             String Setname= tfQset.getText();
-        if (Setname.isEmpty()) {
+             // TODO add your handling code here:
+    String Setname = tfQset.getText();
+    if (Setname.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please enter a Set Name", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
-        if (!isTableExists(Setname)) {
-       JOptionPane.showMessageDialog(this, "Question Set Does not Exist", "Error", JOptionPane.ERROR_MESSAGE);
+
+    if (!isTableExists(Setname)) {
+        JOptionPane.showMessageDialog(this, "Question Set Does not Exist", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
     }
-        if (Gbttn.getText().equals("Load Question")) {
-            loadQuestionFromDatabase();
-        } else if (Gbttn.getText().equals("Submit")) {
-            dispose();
-            Dashboard dd = new Dashboard();
-            dd.setVisible(true);
-            dd.setTitle("Dashboard");
-        }
+
+    if (Gbttn.getText().equals("Load Question")) {
+        loadQuestionFromDatabase();
+    } else if (Gbttn.getText().equals("Submit")) {
+        dispose();
+        Dashboard dd = new Dashboard();
+        dd.setVisible(true);
+        dd.setTitle("Dashboard");
+    }
     }//GEN-LAST:event_GbttnActionPerformed
 
     private void tfQsetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQsetActionPerformed

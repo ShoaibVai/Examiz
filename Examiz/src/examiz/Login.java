@@ -95,6 +95,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jPanel2.setBackground(new java.awt.Color(197, 243, 228));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -247,6 +248,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examiz/icons/Welcome.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/examiz/icons/close (1).gif"))); // NOI18N
         btnClose.setBorder(null);
